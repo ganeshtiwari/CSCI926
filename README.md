@@ -12,5 +12,5 @@ Project Repo for CSCI926 (Software Testing)
   - [Ui Test - PyAutoGUI](https://pypi.org/project/PyAutoGUI/)
   - [Code Analysis - Ruff](https://github.com/astral-sh/ruff)
 
-2. Applicatio Choice
+2. Application Choice
   - [Exaile](https://github.com/exaile/exaile?tab=readme-ov-file) [site](https://exaile.org/)
