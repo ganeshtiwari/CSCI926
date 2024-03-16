@@ -10,6 +10,7 @@ Project Repo for CSCI926 (Software Testing)
   - [Unit Test - UnitTest](https://docs.python.org/3/library/unittest.html)
   - [Mock Test - Mock](https://pypi.org/project/mock/)
   - [Ui Test - PyAutoGUI](https://pypi.org/project/PyAutoGUI/)
+  - [Code Analysis - Ruff](https://github.com/astral-sh/ruff)
 
 2. Applicatio Choice
   - [Exaile](https://github.com/exaile/exaile?tab=readme-ov-file) [site](https://exaile.org/)
