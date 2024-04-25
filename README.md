@@ -4,7 +4,7 @@ Project Repo for CSCI926 (Software Testing)
 # Resources 
 [Week 1 slide](https://docs.google.com/presentation/d/1BnmPHccQ5xg8k5IJvG6wIy1oJznhBIennWBR5TcS-5c/edit#slide=id.p)
 
-# Task 3 
+# Task 2 
 1. Tools Choice 
   - [Unit Test - Pytest](https://docs.pytest.org/en/8.0.x/)
   - [Unit Test - UnitTest](https://docs.python.org/3/library/unittest.html)
