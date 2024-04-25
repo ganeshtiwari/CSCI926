@@ -1,0 +1,70 @@
+# Exaile ignore
+/exaile/tests/.cache
+
+random/
+/exaile/exaile-dist.tar.bz2
+/exaile/exaile-po.tar.bz2
+/exaile/exaile-LATEST.exe
+/exaile/Exaile.dmg
+/exaile/build/
+/exaile/dist/
+
+/exaile/doc/_build
+/exaile/doc/_static
+
+/exaile/tools/installer/src
+/exaile/tools/installer/_bin
+/exaile/tools/installer/_build
+/exaile/tools/installer/_build_osx
+/exaile/tools/installer/_build_env
+/exaile/tools/installer/_build_root
+/exaile/tools/installer/_copy
+/exaile/tools/installer/_dist
+/exaile/tools/installer/_dist_osx
+/exaile/tools/installer/_home
+/exaile/tools/installer/_jhbuild
+/exaile/tools/installer/_inst
+/exaile/tools/installer/_sdk
+/exaile/tools/installer/modulesets
+/exaile/tools/installer/misc
+/exaile/tools/installer/*sdk.tar.gz
+/exaile/tools/installer/bootstrap_osx.sh
+/exaile/tools/installer/build_osx_installer.sh
+/exaile/tools/installer/build_osx_sdk.sh
+/exaile/tools/installer/build_win32_installer.sh
+/exaile/tools/installer/build_win32_sdk.sh
+/exaile/tools/installer/env.sh
+/exaile/tools/installer/clean_osx.sh
+/exaile/tools/installer/clean_win32.sh
+
+# Eclipse
+.project
+.pydevproject
+
+# Glade
+*.ui#
+
+# macOS
+.DS_Store/
+
+# MyPy
+.mypy_cache/
+
+# PyCharm
+.idea/
+
+# pytest
+.pytest_cache/
+
+# Python
+__pycache__/
+
+# Various
+*~
+
+# Vim
+.ropeproject
+*.swp
+
+# VSCode
+.vscode/

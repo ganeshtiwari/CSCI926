@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# 2010-03-12 danfuhry: have launch script gracefully handle XDG_DATA_DIRS
+
+printf "Generating launcher script\n"
+
+DESTDIR=${1:-}
+PREFIX=${2:-/usr/local}
+EPREFIX=${3:-${PREFIX}}
+LIBDIR=${4:-${EPREFIX}/lib}
+PYTHON3_CMD=${5:-python3}
+
+cd ${DESTDIR}${EPREFIX}/bin && \
+cat <<EOF > exaile
+#!/bin/sh
+
+# Exaile launcher script (automatically generated)
+
+EXAILE_PREFIX=${PREFIX}
+EXAILE_EPREFIX=${EPREFIX}
+EXAILE_LIBDIR=${LIBDIR}
+
+if test -z "\${XDG_DATA_DIRS}"; then
+	XDG_DATA_DIRS="/usr/local/share/:/usr/share/"
+fi
+XDG_DATA_DIRS="\${EXAILE_PREFIX}/share/:\${XDG_DATA_DIRS}"
+export XDG_DATA_DIRS
+exec ${PYTHON3_CMD} \${EXAILE_LIBDIR}/exaile/exaile.py --datadir=\${EXAILE_PREFIX}/share/exaile/data --startgui ${DEFAULTARGS} "\$@"
+exit \$?
+
+EOF

@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+
+import sys
+sys.path.insert(0, ".")
+from IPython.Shell import IPShellEmbed
+import exaile
+
+exaile.main()
+exaile = exaile.exaile
+
+IPShellEmbed()({'exaile': exaile})

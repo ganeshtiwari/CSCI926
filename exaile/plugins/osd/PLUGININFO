@@ -1,0 +1,5 @@
+Version='4.1.3'
+Authors=['Mathias Brodala <info@noctus.net>']
+Name=_('On Screen Display')
+Description=_('A popup window showing information of the currently playing track.\nThis plugin is not available on Wayland.')
+Category=_('Notifications')

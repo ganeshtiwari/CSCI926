@@ -1,0 +1,24 @@
+
+OS X Notes
+==========
+
+Exaile has experimental support for OS X as of version 3.4.0. There are
+a number of known issues (including crashes) with Exaile on OS X,
+but these are most likely issues with GTK's OS X support. We hope that as
+time goes on the most critical bugs will go away.
+
+Requirements
+------------
+
+We are not currently distributing an installer for OSX. Instead, you must
+install Exaile via Homebrew. For more details, see the
+`homebrew-exaile <https://github.com/exaile/homebrew-exaile>` repo.
+
+Known issues
+------------
+
+The OS X version is about as functional as the Windows version, so most things
+will work without any problems. The CD plugin and other device plugins will
+not work on OS X.
+
+Transparency may not work.

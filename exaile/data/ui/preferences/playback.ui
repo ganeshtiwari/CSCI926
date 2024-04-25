@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.1 -->
+<interface>
+  <requires lib="gtk+" version="3.10"/>
+  <object class="GtkAdjustment" id="adjustment1">
+    <property name="upper">10000</property>
+    <property name="value">1000</property>
+    <property name="step_increment">50</property>
+    <property name="page_increment">50</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment2">
+    <property name="upper">10000</property>
+    <property name="value">3000</property>
+    <property name="step_increment">50</property>
+    <property name="page_increment">50</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment3">
+    <property name="upper">10000</property>
+    <property name="step_increment">50</property>
+    <property name="page_increment">50</property>
+  </object>
+  <object class="GtkListStore" id="model1">
+    <columns>
+      <!-- column-name item -->
+      <column type="gchararray"/>
+      <!-- column-name title -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0">gstreamer</col>
+        <col id="1" translatable="yes">GStreamer</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkListStore" id="model2">
+    <columns>
+      <!-- column-name item -->
+      <column type="gchararray"/>
+      <!-- column-name title -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkListStore" id="model3">
+    <columns>
+      <!-- column-name item -->
+      <column type="gchararray"/>
+      <!-- column-name title -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkGrid" id="preferences_pane">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="row_spacing">4</property>
+    <property name="column_spacing">2</property>
+    <child>
+      <object class="GtkLabel" id="label:player/audiosink">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="halign">start</property>
+        <property name="label" translatable="yes">Audio Sink:  </property>
+        <accessibility>
+          <relation type="label-for" target="player/audiosink"/>
+        </accessibility>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkComboBox" id="player/audiosink">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="model">model2</property>
+        <property name="active">0</property>
+        <child>
+          <object class="GtkCellRendererText" id="renderer2"/>
+          <attributes>
+            <attribute name="text">1</attribute>
+          </attributes>
+        </child>
+        <accessibility>
+          <relation type="labelled-by" target="label:player/audiosink"/>
+        </accessibility>
+      </object>
+      <packing>
+        <property name="left_attach">1</property>
+        <property name="top_attach">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label:player/audiosink_device">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="halign">start</property>
+        <property name="label" translatable="yes">Audio Device: </property>
+        <accessibility>
+          <relation type="label-for" target="player/audiosink_device"/>
+        </accessibility>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkComboBox" id="player/audiosink_device">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="model">model3</property>
+        <property name="active">0</property>
+        <child>
+          <object class="GtkCellRendererText" id="renderer3"/>
+          <attributes>
+            <attribute name="text">1</attribute>
+          </attributes>
+        </child>
+        <accessibility>
+          <relation type="labelled-by" target="label:player/audiosink_device"/>
+        </accessibility>
+      </object>
+      <packing>
+        <property name="left_attach">1</property>
+        <property name="top_attach">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label:player/custom_sink_pipe">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="halign">start</property>
+        <property name="label" translatable="yes">Custom sink pipeline:</property>
+        <accessibility>
+          <relation type="label-for" target="player/custom_sink_pipe"/>
+        </accessibility>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">3</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="player/custom_sink_pipe">
+        <property name="width_request">150</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <accessibility>
+          <relation type="labelled-by" target="label:player/custom_sink_pipe"/>
+        </accessibility>
+      </object>
+      <packing>
+        <property name="left_attach">1</property>
+        <property name="top_attach">3</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="player/resume_playback">
+        <property name="label" translatable="yes">Resume playback on start</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">False</property>
+        <property name="use_underline">True</property>
+        <property name="active">True</property>
+        <property name="draw_indicator">True</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">4</property>
+        <property name="width">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="player/resume_paused">
+        <property name="label" translatable="yes">Resume playback in paused state</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">False</property>
+        <property name="use_underline">True</property>
+        <property name="draw_indicator">True</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">5</property>
+        <property name="width">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="queue/enqueue_begins_playback">
+        <property name="label" translatable="yes">Adding an item to an empty queue begins playback</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">False</property>
+        <property name="use_underline">True</property>
+        <property name="draw_indicator">True</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">6</property>
+        <property name="width">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="queue/remove_item_when_played">
+        <property name="label" translatable="yes">Remove track from queue upon playback</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">False</property>
+        <property name="use_underline">True</property>
+        <property name="draw_indicator">True</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">7</property>
+        <property name="width">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="queue/remove_item_after_played">
+        <property name="label" translatable="yes">Remove after playback</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">False</property>
+        <property name="use_underline">True</property>
+        <property name="draw_indicator">True</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">8</property>
+        <property name="width">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="queue/disable_new_track_when_playing">
+        <property name="label" translatable="yes">Disallow playing new tracks when another track is playing</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">False</property>
+        <property name="tooltip_text" translatable="yes">If a track is currently playing, do not allow new tracks to be started, except when clicking the playback controls</property>
+        <property name="hexpand">True</property>
+        <property name="draw_indicator">True</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">9</property>
+        <property name="width">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="player/auto_advance">
+        <property name="label" translatable="yes">Automatically advance to the next track</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">False</property>
+        <property name="draw_indicator">True</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">11</property>
+        <property name="width">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label8">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="halign">start</property>
+        <property name="label" translatable="yes">Delay between tracks (ms):</property>
+        <accessibility>
+          <relation type="label-for" target="player/auto_advance_delay"/>
+        </accessibility>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">12</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSpinButton" id="player/auto_advance_delay">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="tooltip_text" translatable="yes">Only works when crossfading not enabled</property>
+        <property name="xalign">1</property>
+        <property name="adjustment">adjustment3</property>
+        <accessibility>
+          <relation type="labelled-by" target="label8"/>
+        </accessibility>
+      </object>
+      <packing>
+        <property name="left_attach">1</property>
+        <property name="top_attach">12</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSpinButton" id="player/crossfade_duration">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="xalign">1</property>
+        <property name="adjustment">adjustment2</property>
+        <accessibility>
+          <relation type="labelled-by" target="label3"/>
+        </accessibility>
+      </object>
+      <packing>
+        <property name="left_attach">1</property>
+        <property name="top_attach">16</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label3">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="halign">start</property>
+        <property name="label" translatable="yes">Crossfade duration (ms):</property>
+        <accessibility>
+          <relation type="label-for" target="player/crossfade_duration"/>
+        </accessibility>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">16</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="player/crossfading">
+        <property name="label" translatable="yes">Use crossfading (EXPERIMENTAL)</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">False</property>
+        <property name="tooltip_text" translatable="yes">Forces automatically advancing to the next track</property>
+        <property name="use_underline">True</property>
+        <property name="draw_indicator">True</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">15</property>
+        <property name="width">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSpinButton" id="player/user_fade">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="xalign">1</property>
+        <property name="adjustment">adjustment1</property>
+        <accessibility>
+          <relation type="labelled-by" target="label2"/>
+        </accessibility>
+      </object>
+      <packing>
+        <property name="left_attach">1</property>
+        <property name="top_attach">14</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label2">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="halign">start</property>
+        <property name="label" translatable="yes">Fade duration (ms):</property>
+        <accessibility>
+          <relation type="label-for" target="player/user_fade"/>
+        </accessibility>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">14</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="player/user_fade_enabled">
+        <property name="label" translatable="yes">Use fade transitions on user actions</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">False</property>
+        <property name="use_underline">True</property>
+        <property name="draw_indicator">True</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">13</property>
+        <property name="width">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="label1">
+        <property name="can_focus">False</property>
+        <property name="no_show_all">True</property>
+        <property name="halign">start</property>
+        <property name="label" translatable="yes">Playback engine: </property>
+        <accessibility>
+          <relation type="label-for" target="player/engine"/>
+        </accessibility>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkComboBox" id="player/engine">
+        <property name="can_focus">True</property>
+        <property name="no_show_all">True</property>
+        <property name="model">model1</property>
+        <property name="active">0</property>
+        <child>
+          <object class="GtkCellRendererText" id="renderer1"/>
+          <attributes>
+            <attribute name="text">1</attribute>
+          </attributes>
+        </child>
+        <accessibility>
+          <relation type="labelled-by" target="label1"/>
+        </accessibility>
+      </object>
+      <packing>
+        <property name="left_attach">1</property>
+        <property name="top_attach">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkCheckButton" id="player/gapless_playback">
+        <property name="label" translatable="yes">Enable gapless playback</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">False</property>
+        <property name="tooltip_text" translatable="yes">Gapless playback means to play tracks without inserting silence between them.</property>
+        <property name="hexpand">True</property>
+        <property name="active">True</property>
+        <property name="draw_indicator">True</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">10</property>
+        <property name="width">2</property>
+      </packing>
+    </child>
+  </object>
+</interface>

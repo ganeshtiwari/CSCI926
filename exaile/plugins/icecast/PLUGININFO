@@ -1,0 +1,5 @@
+Version='4.1.3'
+Authors=['Ingo Brunberg <ingo_brunberg@web.de>']
+Name='Icecast Radio'
+Description='Icecast Radio list'
+Category=_('Media Sources')

@@ -1,0 +1,6 @@
+Version='4.1.3'
+Authors=['Mathias Brodala <info@noctus.net>']
+Name=_('MusicBrainz Covers')
+Description=_('Integrates MusicBrainz for cover search.\n\nRequires: musicbrainzngs')
+Category=_('Covers')
+RequiredModules=['musicbrainzngs']

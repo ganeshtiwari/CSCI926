@@ -1,0 +1,5 @@
+Version='4.1.3'
+Authors=['Johannes Sasongko <sasongko@gmail.com>', 'Mathias Brodala <info@noctus.net>']
+Name=_('Desktop Cover')
+Description=_('Displays the current album cover on the desktop')
+Category=_('GUI')

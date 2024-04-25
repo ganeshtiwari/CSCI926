@@ -1,0 +1,31 @@
+
+Windows Notes
+=============
+
+Exaile has official support for Microsoft Windows, and is distributed in an
+official installer program.
+
+Exaile (and its installer) has been tested on Windows 10.
+
+Running Exaile
+--------------
+
+If you installed Exaile using the Windows installer, you can find a shortcut to
+launch Exaile in the Start Menu.
+
+Alternatively, you can directly launch "exaile_win.py" in the source directory.
+This requires you to have an MSYS2 environment set up.
+
+
+Bug Reporting
+-------------
+
+If Exaile crashes, you should be able to find a logfile from the last time
+Exaile was launched in the following directories:
+
+* Windows XP: ``%USERPROFILE%\Local Settings\Application Data\exaile\logs``
+* Windows 7+: ``%USERPROFILE%\AppData\Local\exaile\logs``
+
+If you run into any bugs not mentioned in this document, please report them
+to us via `GitHub <https://github.com/exaile/exaile/issues>`_. Please include any
+relevant logfile snippets.

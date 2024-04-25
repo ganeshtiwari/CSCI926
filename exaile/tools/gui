@@ -1,0 +1,5 @@
+#!/bin/sh
+
+python3 -i ../exaile.py --startgui $*
+
+make clean

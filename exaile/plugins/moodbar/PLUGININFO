@@ -1,0 +1,6 @@
+Version='4.1.3'
+Authors=['Johannes Sasongko <sasongko@gmail.com>']
+Name=_('Moodbar')
+Description=_('Show visual representation of the music timeline.\n\nRequires: moodbar')
+Category=_('GUI')
+RequiredModules=['gi:PangoCairo']

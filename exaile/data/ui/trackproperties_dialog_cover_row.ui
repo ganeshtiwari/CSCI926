@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.1 -->
+<interface>
+  <requires lib="gtk+" version="3.10"/>
+  <object class="GtkImage" id="image">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">list-add</property>
+  </object>
+  <object class="GtkListStore" id="type_model">
+    <columns>
+      <!-- column-name type -->
+      <column type="guint"/>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0">0</col>
+        <col id="1" translatable="yes">Other</col>
+      </row>
+      <row>
+        <col id="0">1</col>
+        <col id="1" translatable="yes">32x32 pixels 'file icon' (PNG only)</col>
+      </row>
+      <row>
+        <col id="0">2</col>
+        <col id="1" translatable="yes">Other file icon</col>
+      </row>
+      <row>
+        <col id="0">3</col>
+        <col id="1" translatable="yes">Cover (front)</col>
+      </row>
+      <row>
+        <col id="0">4</col>
+        <col id="1" translatable="yes">Cover (back)</col>
+      </row>
+      <row>
+        <col id="0">5</col>
+        <col id="1" translatable="yes">Leaflet page</col>
+      </row>
+      <row>
+        <col id="0">6</col>
+        <col id="1" translatable="yes">Media (e.g. label side of CD)</col>
+      </row>
+      <row>
+        <col id="0">7</col>
+        <col id="1" translatable="yes">Lead artist/lead performer/soloist</col>
+      </row>
+      <row>
+        <col id="0">8</col>
+        <col id="1" translatable="yes">Artist/performer</col>
+      </row>
+      <row>
+        <col id="0">9</col>
+        <col id="1" translatable="yes">Conductor</col>
+      </row>
+      <row>
+        <col id="0">10</col>
+        <col id="1" translatable="yes">Band/Orchestra</col>
+      </row>
+      <row>
+        <col id="0">11</col>
+        <col id="1" translatable="yes">Composer</col>
+      </row>
+      <row>
+        <col id="0">12</col>
+        <col id="1" translatable="yes">Lyricist/text writer</col>
+      </row>
+      <row>
+        <col id="0">13</col>
+        <col id="1" translatable="yes">Recording Location</col>
+      </row>
+      <row>
+        <col id="0">14</col>
+        <col id="1" translatable="yes">During recording</col>
+      </row>
+      <row>
+        <col id="0">15</col>
+        <col id="1" translatable="yes">During performance</col>
+      </row>
+      <row>
+        <col id="0">16</col>
+        <col id="1" translatable="yes">Movie/video screen capture</col>
+      </row>
+      <row>
+        <col id="0">17</col>
+        <col id="1" translatable="yes">A bright coloured fish</col>
+      </row>
+      <row>
+        <col id="0">18</col>
+        <col id="1" translatable="yes">Illustration</col>
+      </row>
+      <row>
+        <col id="0">19</col>
+        <col id="1" translatable="yes">Band/artist logotype</col>
+      </row>
+      <row>
+        <col id="0">20</col>
+        <col id="1" translatable="yes">Publisher/Studio logotype</col>
+      </row>
+    </data>
+  </object>
+  <template class="TagImageField" parent="GtkBox">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="spacing">5</property>
+    <child>
+      <object class="GtkButton" id="button">
+        <property name="label">_Add Cover</property>
+        <property name="use_action_appearance">False</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="tooltip_text" translatable="yes">Click or drag files here to change the cover image</property>
+        <property name="image">image</property>
+        <property name="use_underline">True</property>
+        <property name="always_show_image">True</property>
+        <signal name="clicked" handler="_on_button_clicked" swapped="no"/>
+        <signal name="drag-data-received" handler="_on_button_drag_data_received" swapped="no"/>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkGrid" id="grid1">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="row_spacing">6</property>
+        <property name="column_spacing">6</property>
+        <child>
+          <object class="GtkLabel" id="label5">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">end</property>
+            <property name="label" translatable="yes">Description:</property>
+            <accessibility>
+              <relation type="label-for" target="description_entry"/>
+            </accessibility>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label4">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">end</property>
+            <property name="label" translatable="yes">Type:</property>
+            <accessibility>
+              <relation type="label-for" target="type_selection"/>
+            </accessibility>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="description_entry">
+            <property name="visible">True</property>
+            <property name="sensitive">False</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <signal name="changed" handler="_on_description_entry_changed" swapped="no"/>
+            <accessibility>
+              <relation type="labelled-by" target="label5"/>
+            </accessibility>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkComboBox" id="type_selection">
+            <property name="visible">True</property>
+            <property name="sensitive">False</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="model">type_model</property>
+            <signal name="changed" handler="_on_type_selection_changed" swapped="no"/>
+            <child>
+              <object class="GtkCellRendererText" id="cellrenderertext1"/>
+              <attributes>
+                <attribute name="text">1</attribute>
+              </attributes>
+            </child>
+            <accessibility>
+              <relation type="labelled-by" target="label4"/>
+            </accessibility>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="info_label">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">start</property>
+            <property name="hexpand">True</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+            <property name="width">2</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">1</property>
+      </packing>
+    </child>
+  </template>
+</interface>

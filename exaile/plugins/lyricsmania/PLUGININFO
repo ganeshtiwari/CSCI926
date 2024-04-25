@@ -1,0 +1,6 @@
+Version='4.1.3'
+Authors=['Rocco Aliberti <raliberti84@gmail.com>']
+Name='LyricsMania'
+Description=_('Plugin to fetch lyrics from lyricsmania.com\nRequires: lxml')
+Category=_('Lyrics')
+RequiredModules=['lxml']
