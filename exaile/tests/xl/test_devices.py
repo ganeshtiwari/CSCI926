@@ -2,7 +2,7 @@ import pytest
 import os
 from xl.devices import Device, TransferNotSupportedError, KeyedDevice
 
-class TestDevice(Device):
+class Device(Device):
     def connect(self):
         if not self._connected:
             self.connected = True
@@ -13,7 +13,7 @@ class TestDevice(Device):
         pass
 
 def test_connect():
-    device = TestDevice("device")
+    device = Device("device")
     assert not device.is_connected()   
     device.connect()
     assert device.is_connected()
@@ -21,25 +21,25 @@ def test_connect():
     assert not device.is_connected()
 
 def test_autoconnect():
-    device = TestDevice("device")
-    TestDevice.class_autoconnect = True    
+    device = Device("device")
+    Device.class_autoconnect = True    
     device.autoconnect()
     assert device.is_connected()
-    TestDevice.class_autoconnect = False
+    Device.class_autoconnect = False
 
 def test_get_collection():
-    device = TestDevice("device")
+    device = Device("device")
     collection = device.get_collection()
     assert collection.name == "device"
 
 def test_get_playlists():
-    device = TestDevice("device")
+    device = Device("device")
     playlists = device.get_playlists()
     assert isinstance(playlists, list)
     assert len(playlists) == 0
 
 def test_add_tracks_nosupport():
-    device = TestDevice("device")
+    device = Device("device")
     with pytest.raises(TransferNotSupportedError):
         device.add_tracks(["track1", "track2"])
 
@@ -51,7 +51,7 @@ def test_add_tracks_support():
             self.queue.extend(tracks)
         def transfer(self):
             pass
-    device = TestDevice("device")
+    device = Device("device")
     device.transfer = Transfer()
     device.add_tracks(["track1", "track2"])
     assert device.transfer.queue == ["track1", "track2"]   
