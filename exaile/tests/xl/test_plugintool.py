@@ -6,7 +6,6 @@ def new_plugins_dir(tmpdir):
     plugins_dir = tmpdir.mkdir('plugins')
     plugin1_dir = plugins_dir.mkdir('plugin1')
     plugin2_dir = plugins_dir.mkdir('plugin2')
-
     with open(plugin1_dir.join('PLUGININFO'), 'w') as f:
         f.write("Version='1.0'\n")
     with open(plugin2_dir.join('PLUGININFO'), 'w') as f:
