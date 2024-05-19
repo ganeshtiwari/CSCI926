@@ -1,7 +1,9 @@
 import pytest
-from unittest.mock import patch, MagicMock
+import os
+import builtins
+from unittest.mock import patch, mock_open, MagicMock, call, PropertyMock
 from mutagen import File
-from xl.metadata._base import BaseFormat, CaseInsensitiveBaseFormat, NotReadable, NotWritable
+from xl.metadata._base import BaseFormat, CaseInsensitiveBaseFormat, NotReadable, NotWritable, INFO_TAGS, settings
 
 test_file_path = "/check/data/music/05 - Truly.mp3"
 
