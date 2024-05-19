@@ -1,6 +1,6 @@
 import pytest
 import os
-from xl.devices import Device, TransferNotSupportedError, KeyedDevice
+from xl.devices import Device, TransferNotSupportedError, KeyedDevice, DeviceManager
 
 class Device(Device):
     def connect(self):
@@ -57,23 +57,126 @@ def test_add_tracks_support():
     assert device.transfer.queue == ["track1", "track2"]   
     device.start_transfer()
 
-class MockDevice(KeyedDevice):
-    pass
+@pytest.fixture
+def reset_keyed_device_class():
+    yield
+    setattr(KeyedDevice, '__devices', {})
 
-def test_caching():
-    device1 = MockDevice('device1')
-    device2 = MockDevice('device1')
+def test_singleton_behavior(reset_keyed_device_class):
+    device1 = KeyedDevice('key1', 'Device1')
+    device2 = KeyedDevice('key1', 'Device1')
     assert device1 is device2
 
-def test_initialization():
-    key = 'key'
-    device1 = MockDevice(key)
-    device2 = MockDevice(key)
-    assert getattr(device1, '_KeyedDevice__initialized') == True
-    assert getattr(device2, '_KeyedDevice__initialized') == True
+def test_init_check(reset_keyed_device_class):
+    device1 = KeyedDevice('key1', 'Device1')
+    device2 = KeyedDevice('key1', 'Device1')
 
-def test_destroy():
-    device = MockDevice('destroy')
-    MockDevice.destroy(device)
-    new_device = MockDevice('destroy')
-    assert new_device is not device
+def test_destroy_functionality(reset_keyed_device_class):
+    device1 = KeyedDevice('key1', 'Device1')
+    KeyedDevice.destroy(device1)
+    assert 'key1' not in getattr(KeyedDevice, '__devices')
+
+def test_multiple_keys(reset_keyed_device_class):
+    device1 = KeyedDevice('key1', 'Device1')
+    device2 = KeyedDevice('key2', 'Device2')
+    assert device1 is not device2
+    assert device1.name != device2.name
+
+class MockDevice:
+    def __init__(self, name, connected=False):
+        self.name = name
+        self.connected = connected
+
+    def get_name(self):
+        return self.name
+
+    def disconnect(self):
+        self.connected = False
+
+class MockEventLogger:
+    def __init__(self):
+        self.logged_events = []
+
+    def log_event(self, event_type, manager, device):
+        self.logged_events.append((event_type, manager, device.get_name()))
+
+@pytest.fixture
+def device_manager():
+    return DeviceManager()
+
+@pytest.fixture
+def event_logger(monkeypatch):
+    logger = MockEventLogger()
+    monkeypatch.setattr('xl.devices.event.log_event', logger.log_event)
+    return logger
+
+def test_add_device_new(device_manager, event_logger):
+    device = MockDevice("Device1")
+    device_manager.add_device(device)
+    assert device_manager.devices[device.get_name()] == device
+    assert ("device_added", device_manager, "Device1") in event_logger.logged_events
+
+def test_add_device_existing(device_manager, event_logger):
+    device1 = MockDevice("Device1")
+    device2 = MockDevice("Device1")
+    device_manager.add_device(device1)
+    device_manager.add_device(device2)
+    assert device_manager.devices["Device1"] == device1
+    assert device_manager.devices["Device1 (2)"] == device2
+    assert ("device_added", device_manager, "Device1") in event_logger.logged_events
+    assert ("device_added", device_manager, "Device1 (2)") in event_logger.logged_events
+
+def test_add_device_multiple(device_manager, event_logger):
+    device1 = MockDevice("Device1")
+    device2 = MockDevice("Device1")
+    device3 = MockDevice("Device1")
+    device_manager.add_device(device1)
+    device_manager.add_device(device2)
+    device_manager.add_device(device3)
+    assert device_manager.devices["Device1"] == device1
+    assert device_manager.devices["Device1 (2)"] == device2
+    assert device_manager.devices["Device1 (3)"] == device3
+    assert ("device_added", device_manager, "Device1") in event_logger.logged_events
+    assert ("device_added", device_manager, "Device1 (2)") in event_logger.logged_events
+    assert ("device_added", device_manager, "Device1 (3)") in event_logger.logged_events
+
+def test_remove_device_connected(device_manager, event_logger):
+    device = MockDevice("Device1", connected=True)
+    device_manager.devices[device.get_name()] = device
+    device_manager.remove_device(device)
+    assert device.get_name() not in device_manager.devices
+    assert not device.connected
+    assert ("device_removed", device_manager, "Device1") in event_logger.logged_events
+
+def test_remove_device_disconnected(device_manager, event_logger):
+    device = MockDevice("Device1")
+    device_manager.devices[device.get_name()] = device
+    device_manager.remove_device(device)
+    assert device.get_name() not in device_manager.devices
+    assert ("device_removed", device_manager, "Device1") in event_logger.logged_events
+
+def test_remove_device_nonexistant(device_manager, event_logger):
+    device = MockDevice("Device1")
+    device_manager.remove_device(device)
+    assert ("device_removed", device_manager, "Device1") in event_logger.logged_events
+
+def test_get_devices_empty(device_manager):
+    devices = list(device_manager.get_devices())
+    assert len(devices) == 0
+
+def test_get_devices_singleDevice(device_manager):
+    device = MockDevice("Device1")
+    device_manager.devices[device.get_name()] = device
+    devices = list(device_manager.get_devices())
+    assert len(devices) == 1
+    assert devices[0] == device
+
+def test_get_devices_multipleDevices(device_manager):
+    device1 = MockDevice("Device1")
+    device2 = MockDevice("Device2")
+    device_manager.devices[device1.get_name()] = device1
+    device_manager.devices[device2.get_name()] = device2
+    devices = list(device_manager.get_devices())
+    assert len(devices) == 2
+    assert set(devices) == {device1, device2}
+
