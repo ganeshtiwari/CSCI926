@@ -132,6 +132,10 @@ def test_various_cases():
     with pytest.raises(ValueError):
         TimeSpan("string")
 
+    # None
+    with pytest.raises(ValueError):
+        TimeSpan(None)
+
     # negative values
     with pytest.raises(ValueError):
         TimeSpan(-500)
