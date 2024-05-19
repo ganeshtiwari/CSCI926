@@ -16,31 +16,14 @@ Project Repo for CSCI926 (Software Testing)
   - [Exaile](https://github.com/exaile/exaile?tab=readme-ov-file) [site](https://exaile.org/)
 
 
-## Notes
-queue.py
+## Setting up the project 
 ```
-def get_next(self):
-        """
-        Retrieves the next track that will be played. Does not
-        actually set the position. When you call next(), it should
-        return the same track.
+sudo apt install python3 python3-pip python3-gi python3-gi-cairo gir1.2-gtk-3.0 libdb-dev
+pip install berkeleydb mutagen pytest pytest-mock
+```
 
-        This exists to support retrieving a track before it actually
-        needs to be played, such as for pre-buffering.
-
-        :returns: the next track to be played
-        :rtype: :class:`xl.trax.Track` or None
-        """
-        if self.__queue_has_tracks and len(self):
-            track = self._calculate_next_track()
-            if track is not None:
-                return track
-        
-        # None check skipped, leading to call of get_next() on None when # self.current_playlist is None
-        if self.current_playlist is not self: 
-            return self.current_playlist.get_next()
-        elif self.last_playlist is not None:
-            return self.last_playlist.get_next()
-        else:
-            return None
+## Running tests
+```
+export EXAILE_DIR=<your exaile dir>
+/bin/python3 -m pytest tests/xl/
 ```
